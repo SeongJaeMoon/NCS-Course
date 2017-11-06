@@ -18,5 +18,21 @@ public class sample012 {
 		double x = 10.0;
 		e += (int)x;
 		System.out.println(e);
+		//산술 연산자 +,-,*,/,%,++,--
+		//문자열 + 임의의 자료형 = 문자열 
+		System.out.println("d+f="+(d+f));
+		// int / int = int, int%int = int
+		int z= 15, q = 10;
+		System.out.println(z/(double)q);
+		
+		System.out.println(a++);
+		System.out.println(++a);
+		System.out.println(a++);
+		System.out.println(b--);
+		System.out.println(--b);
+		System.out.println(b--);
+		
+		int qulified = Integer.MAX_VALUE;
+		System.out.println(qulified+a);
 	}
 }

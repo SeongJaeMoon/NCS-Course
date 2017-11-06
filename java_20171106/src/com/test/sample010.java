@@ -2,7 +2,7 @@ package com.test;
 
 public class sample010 {
 
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		//Casting
 		//Data type (A convert to B),암시적, 명시적
 		//
@@ -16,5 +16,5 @@ public class sample010 {
 		a = b;
 		c = b;
 		d = a;
-	}*/
+	}
 }
