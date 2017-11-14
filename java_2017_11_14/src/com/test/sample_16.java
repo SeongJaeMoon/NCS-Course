@@ -9,77 +9,73 @@ public class sample_16 {
 
 	public static void main(String[] args) {
 
-		// ÇĞ»ı¼ö, Á¡¼öÀÔ·Â, Á¡¼ö¸®½ºÆ®, ºĞ¼®, Á¾·á ±â´ÉÀ» °¡Áø ÇÁ·Î±×·¥ ÀÛ¼º.
-		// 1´Ü°è) ÇĞ»ıÀÇ Á¡¼ö ¿©·¯°³¸¦ ¿ÜºÎ¿¡¼­ ÀÔ·Â ¹Ş¾Æ¼­ ¹è¿­¿¡ ÀúÀåÇÏ°í, Á¡¼ö¸®½ºÆ® Ãâ·Â
-		// 2´Ü°è) ÃÖ°íÁ¡¼ö, Æò±ÕÁ¡¼ö Ãß°¡ Ãâ·Â
-		// 3´Ü°è) Á¡¼ö¸¦ ¿ÜºÎ ÀÔ·Â ¹Ş¾Æ¼­ ¹è¿­¿¡ ÀúÀå
-		// 4´Ü°è) ÇĞ»ı¼ö¿¡ ´ëÇÑ ¿ÜºÎ ÀÔ·Â ¹Ş¾Æ¼­ ¹è¿­ÀÇ Å©±â ÁöÁ¤
-		// 5´Ü°è) ¸Ş´º Ãâ·Â
-		// 6´Ü°è) ÇĞ»ı¼ö(¹è¿­ Å©±â)¸¦ °¡º¯ÀûÀ¸·Î ¿î¿µÇÏµµ·Ï ¼öÁ¤. ÃÊ±â°ª 5, ÀÚµ¿È®Àå(¹è¿­Å©±â+5)
+		// í•™ìƒìˆ˜, ì ìˆ˜ì…ë ¥, ì ìˆ˜ë¦¬ìŠ¤íŠ¸, ë¶„ì„, ì¢…ë£Œ ê¸°ëŠ¥ì„ ê°€ì§„ í”„ë¡œê·¸ë¨ ì‘ì„±.
+		// 1ë‹¨ê³„) í•™ìƒì˜ ì ìˆ˜ ì—¬ëŸ¬ê°œë¥¼ ì™¸ë¶€ì—ì„œ ì…ë ¥ ë°›ì•„ì„œ ë°°ì—´ì— ì €ì¥í•˜ê³ , ì ìˆ˜ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
+		// 2ë‹¨ê³„) ìµœê³ ì ìˆ˜, í‰ê· ì ìˆ˜ ì¶”ê°€ ì¶œë ¥
+		// 3ë‹¨ê³„) ì ìˆ˜ë¥¼ ì™¸ë¶€ ì…ë ¥ ë°›ì•„ì„œ ë°°ì—´ì— ì €ì¥
+		// 4ë‹¨ê³„) í•™ìƒìˆ˜ì— ëŒ€í•œ ì™¸ë¶€ ì…ë ¥ ë°›ì•„ì„œ ë°°ì—´ì˜ í¬ê¸° ì§€ì •
+		// 5ë‹¨ê³„) ë©”ë‰´ ì¶œë ¥
+		// 6ë‹¨ê³„) í•™ìƒìˆ˜(ë°°ì—´ í¬ê¸°)ë¥¼ ê°€ë³€ì ìœ¼ë¡œ ìš´ì˜í•˜ë„ë¡ ìˆ˜ì •. ì´ˆê¸°ê°’ 5, ìë™í™•ì¥(ë°°ì—´í¬ê¸°+5)
 		/*
-		 * Ãâ·Â¿¹)
+		 * ì¶œë ¥ì˜ˆ)
 		 */
 		int[] score = new int[5];
-		int[] scoreCopy = new int[score.length];
-		
 		int studentNum = 0;
 		boolean run = true;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("¼ºÀû ÇÁ·Î±×·¥ÀÔ´Ï´Ù.");
+		System.out.println("ì„±ì  í”„ë¡œê·¸ë¨ì…ë‹ˆë‹¤.");
 		while (run) {
 			System.out.println("------------------------------------");
-			System.out.println("2.Á¡¼öÀÔ·Â|3.Á¡¼ö¸®½ºÆ®|4.ºĞ¼®|5.Á¾·á");
+			System.out.println("2.ì ìˆ˜ì…ë ¥|3.ì ìˆ˜ë¦¬ìŠ¤íŠ¸|4.ë¶„ì„|5.ì¢…ë£Œ");
 			System.out.println("------------------------------------");
 			int input = sc.nextInt();
 			sc.nextLine();
 			if (input == 2) {
-				System.out.println("Á¡¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+				System.out.println("ì ìˆ˜ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 				while (true) {
 					System.out.printf("score[%d]>", studentNum);
 					if(studentNum == score.length) {
-						scoreCopy = new int[score.length];
-						scoreCopy = Arrays.copyOf(score, score.length);
-						score = new int[score.length+5];
+						scoreCopy = Arrays.copyOf(score, score.length+5);
 					}
 					score[studentNum] = sc.nextInt();
 					sc.nextLine();
 					++studentNum;
-					System.out.println("ÀÔ·ÂÀ» °è¼ÓÇÒ±î¿ä?(y/n)");
+					System.out.println("ì…ë ¥ì„ ê³„ì†í• ê¹Œìš”?(y/n)");
 					String xy = sc.nextLine();
 					sc.nextLine();
 					if (xy.equalsIgnoreCase("n")) {
-						System.out.printf("¼±ÅÃ>%s%n", xy);
+						System.out.printf("ì„ íƒ>%s%n", xy);
 						break;
 					}
 				}
 			} else if (input == 3) {
-				System.out.printf("¼±ÅÃ>%d%n", input);
+				System.out.printf("ì„ íƒ>%d%n", input);
 				for (int i = 0; i < studentNum; i++) {
-					System.out.printf("score[%d] : %d%n", i, scoreCopy[i]);
+					System.out.printf("score[%d] : %d%n", i, score[i]);
 				}
 			} else if (input == 4) {
-				System.out.printf("¼±ÅÃ>%d%n", input);
-				// ÃÖ°íÁ¡¼ö, Æò±ÕÁ¡¼ö Ãâ·Â
-				int max = scoreCopy[0];
+				System.out.printf("ì„ íƒ>%d%n", input);
+				// ìµœê³ ì ìˆ˜, í‰ê· ì ìˆ˜ ì¶œë ¥
+				int max = score[0];
 				int sum = 0;
 
 				for (int i = 0; i < studentNum; i++) {
 					sum += scoreCopy[i];
-					if (max < scoreCopy[i]) {
-						max = scoreCopy[i];
+					if (max < score[i]) {
+						max = score[i];
 					}
 				}
 				double avg = sum / (double) studentNum;
-				System.out.printf("ÃÖ°íÁ¡¼ö: %d, Æò±ÕÁ¡¼ö: %.1f%n", max, avg);
+				System.out.printf("ìµœê³ ì ìˆ˜: %d, í‰ê· ì ìˆ˜: %.1f%n", max, avg);
 			} else if (input == 5) {
 				sc.close();
-				System.out.println("ÇÁ·Î±×·¥ Á¾·á");
+				System.out.println("í”„ë¡œê·¸ë¨ ì¢…ë£Œ");
 				run = false;
 			} else {
 				System.out.printf("%d, %d, %d%n", score.length, scoreCopy.length ,studentNum);
 				System.out.println(Arrays.toString(score));
 				System.out.println(Arrays.toString(scoreCopy));
-				//System.out.println("¾Ë ¼ö ¾ø´Â ÀÔ·ÂÀÔ´Ï´Ù.");
+				//System.out.println("ì•Œ ìˆ˜ ì—†ëŠ” ì…ë ¥ì…ë‹ˆë‹¤.");
 				sc.nextLine();
 			}
 		}
