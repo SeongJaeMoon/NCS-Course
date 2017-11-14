@@ -603,3 +603,91 @@ class  heart
            System.out.print("*");
    }
 }
+	
+		/*
+	     1  2  3  4  5
+		10  9  8  7  6
+		15 14 13 12 11
+		16 17 18 19 20
+		25 24 23 22 21
+		 */
+		
+		int[][]arr = new int[5][5];
+		int num = 0;
+		
+		for(int i = 0; i < arr.length; i++) {
+			for(int j =0; j < arr[i].length; j++) {
+				if(i%2==0) {
+					arr[i][j] = ++num;
+				}else {
+					arr[i][arr[j].length - j - 1] = ++num;
+				}
+			}
+		}
+		
+		for(int i = 0; i < arr.length; i++) {
+			for(int j= 0; j < arr[i].length; j++) {
+				System.out.printf("%3d", arr[i][j]);
+			}
+			System.out.print("\n");
+		}
+	
+		/*
+		      달팽이
+		   1  2  3  4 5
+ 		  16 17 18 19 6
+ 		  15 24 25 20 7
+ 		  14 23 22 21 8
+		  13 12 11 10 9
+		 */
+		int size = 5;
+		int[][] arr = new int[size][size];
+		/*int num = 0;
+		int x = 0;
+		int y = -1;
+		int delta = 0;
+		
+		while(size > 0){
+		for (int i = 0; i < size; i++) {
+			++y;
+			arr[x][y] = ++num;
+		}
+		--size;
+		for (int i = 0; i < size; i++) {
+			++x;
+			arr[x][y] = ++num;
+		}
+		for (int i = 0; i < size; i++) {
+			--y;
+			arr[x][y] = ++num;
+		}
+		--size;
+		for (int i = 0; i < size; i++) {
+			--x;
+			arr[x][y] = ++num;
+		}
+	}*/
+		
+		int temp = 1;
+		int z = 0, q = -1;
+		int count = 0;
+		while(size > 0) {
+			for(int i = 0; i < size; i++) {
+				q += temp;
+				arr[z][q] = ++count;
+			}
+			--size;
+			for(int i = 0; i < size; i++) {
+				z += temp;
+				arr[z][q] = ++count;
+			}
+			temp = -temp;
+		}
+		
+		
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				System.out.printf("%3d", arr[i][j]);
+			}
+			System.out.print("\n");
+		}
