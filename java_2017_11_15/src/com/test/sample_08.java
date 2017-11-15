@@ -1,58 +1,130 @@
-package com.test;
+//문제) 중복되지 않은 난수 여러개를 얻는 프로그램 코드 작성.
+  //로또 숫자 범위의 난수(1~45) 6개를 얻을때 중복된 숫자가 없는 상태로 얻어야 한다.
+  //로또 숫자 6개를 한 번에 여러개 얻는 경우도 중복되면 안된다.
+  //6개 숫자를 출력시 정렬된 상태로 출력해야 한다.
+  //배열의 배열 사용
+  
+  /*
+  
+  출력예)
+  원하는 장수(1~10)?5
+  1) [1, 2, 3, 4, 5, 6]
+  2) [1, 2, 3, 4, 5, 7]
+  3) [13, 14, 15, 16, 17, 18]
+  4) [19, 20, 21, 22, 23, 24]
+  5) [25, 26, 27, 28, 29, 30]
+  
+  */
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAdjusters;
+package test.com;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class sample_08 {
+public class Lotto {
 
-	public static void main(String[] args) {
-		// ����) �ߺ����� ���� ���� �������� ��� ���α׷� �ڵ� �ۼ�.
-		// �ζ� ���� ������ ����(1~45) 6���� ���� �� �ߺ��� ���ڰ� ���� ���·� ���� �Ѵ�.
-		// �ζ� ���� 6���� �� ���� ������ ��� ���
-		// 6�� ���ڸ� ��½� ���ĵ� ���·� ��� -> ��������
-		// �ִ� ���� ���� 10��
-		/*
-		 * ���¿�) ���ϴ� ���(1~n) ex.5 �ߺ��� ����� �ȴ�.
-		 */
+ public static void main(String[] args) {
+  Scanner input = new Scanner(System.in);
+  boolean run = true;
+  System.out.println("로또 번호 출력 프로그램입니다.");
+  while (run) {
+   System.out.println("로또 장수를 입력해주세요(선택제한 :10), (종료:0)");
+   int size = input.nextInt();
+   input.nextLine();
+   int[][] lottoArray = new int[size][6];
 
-		Scanner input = new Scanner(System.in);
-		int cnt = 0;
-		boolean isOk = true;
-		boolean run = true;
-		System.out.println("�ζ� ����ϴ� ���� �Դϴ�.");
-		while (run) {
-			System.out.println("�ζ� ����� Ŭ�����ּ���(�������� :10)");
-			int size = input.nextInt();
-			input.nextLine();
-			int[][] rottoArray = new int[size][6];
+   if (size > 10) {
+    System.out.println("장수 제한은 10장입니다.");
+   } else if (size == 0) {
+    System.out.println("프로그램을 종료합니다.");
+    run = false;
+    input.close();
+   } else {
 
-			if (size > 10) {
-				System.out.println("��� ������ 10���Դϴ�.");
-			} else {
-				while (isOk) {
-					for (int i = 0; i < rottoArray.length; i++) {
-						int[] rottoColum = new int[6];
-						for (int j = 0; j < 5; j++) {
-							rottoColum[j] = (int) (Math.random() * 45) + 1;				
-						}
-						Arrays.sort(rottoColum);
-						
-						if(Arrays.equals(rottoArray[i], rottoArray[i+1]))
-							]
-						rottoArray[i] = rottoColum;
-					}
-					isOk = false;
-				}
-				for (int i = 0; i < size; i++) {
-					System.out.println(Arrays.toString(rottoArray[i]));
-				}
-			}
-		}
-		input.close();
-	}
+    for (int i = 0; i < lottoArray.length; i++) {// size의 크기만큼 반복
+     int[] lottoColum = new int[6]; // 각 행에 할당할 열배열 선언
+     for (int j = 0; j < lottoColum.length; j++) { // 열의 크기만큼 반복
+      lottoColum[j] = (int) (Math.random() * 45) + 1; // 0번째부터 배열에 난수 할당
+      for (int k = 0; k < j; k++) { // 현재 배열의 할당 된 크기만큼 반복
+       if (lottoColum[j] == lottoColum[k]) { // 이전 인덱스의 저장 된 값과 중복된다면
+        j--;// 재실행을 위해 인덱스 줄여주기
+        break;
+       }
+      }
+     }
+     Arrays.sort(lottoColum); // 정렬
+     lottoArray[i] = lottoColum; // 배열의 행에 맞게 열 값 할당
+     for (int j = 0; j < i; j++) { // 현재 배열의 입력된 크기만큼 반복
+      if (Arrays.equals(lottoArray[i], lottoArray[j])) { // 이전 배열과 중복된다면
+       i--; // 재실행을 위해 인덱스 줄여주기
+       break;
+      }
+     }
+    }
+
+    for (int i = 0; i < size; i++) {
+     System.out.println(Arrays.toString(lottoArray[i])); // 배열의 size 크기만큼 출력
+    }
+   }
+  }
+ }
 }
+ <--!출력 예-->  
+로또 번호 출력 프로그램입니다.
+로또 장수를 입력해주세요(선택제한 :10), (종료:0)
+5
+[2, 10, 17, 24, 30, 38]
+[3, 13, 22, 32, 40, 43]
+[1, 3, 4, 20, 24, 31]
+[9, 10, 22, 27, 30, 45]
+[9, 15, 17, 29, 31, 38]
+로또 장수를입력해주세요(선택제한 :10), (종료:0)
+6
+[4, 11, 15, 21, 23, 26]
+[8, 20, 29, 30, 32, 42]
+[2, 5, 9, 16, 24, 39]
+[13, 14, 20, 27, 37, 45]
+[11, 17, 18, 27, 38, 43]
+[22, 25, 29, 36, 37, 44]
+로또 장수를 입력해주세요(선택제한 :10), (종료:0)
+7
+[7, 10, 14, 29, 36, 40]
+[4, 5, 16, 29, 31, 39]
+[18, 22, 28, 33, 39, 42]
+[6, 14, 16, 27, 35, 40]
+[3, 8, 15, 24, 33, 40]
+[23, 24, 33, 36, 39, 43]
+[1, 9, 10, 20, 35, 41]
+로또 장수를 입력해주세요(선택제한 :10), (종료:0)
+8
+[8, 13, 19, 21, 22, 26]
+[4, 15, 18, 36, 42, 44]
+[5, 11, 13, 24, 30, 43]
+[7, 21, 24, 34, 37, 38]
+[14, 20, 25, 29, 30, 37]
+[5, 6, 12, 15, 19, 44]
+[8, 17, 19, 21, 33, 44]
+[7, 9, 12, 34, 40, 41]
+로또 장수를 입력해주세요(선택제한 :10), (종료:0)
+9
+[6, 12, 15, 19, 38, 43]
+[1, 9, 27, 42, 44, 45]
+[2, 15, 18, 32, 37, 42]
+[6, 7, 8, 19, 30, 45]
+[1, 12, 16, 29, 39, 45]
+[10, 15, 17, 20, 26, 36]
+[3, 23, 32, 34, 36, 45]
+[2, 20, 25, 27, 37, 40]
+[1, 13, 19, 29, 37, 42]
+로또 장수를 입력해주세요(선택제한 :10), (종료:0)
+10
+[4, 7, 10, 19, 20, 28]
+[2, 15, 22, 23, 34, 44]
+[2, 8, 9, 19, 21, 41]
+[2, 7, 12, 14, 30, 35]
+[2, 16, 22, 26, 40, 44]
+[8, 15, 20, 21, 23, 28]
+[9, 10, 11, 21, 36, 37]
+[12, 28, 31, 32, 34, 39]
+[5, 14, 17, 28, 33, 40]
+[7, 21, 29, 31, 33, 42]
